@@ -10,11 +10,11 @@ STRATEGIES = {
 }
 
 EVENTS = [
-    ("🚥 Обогнал соперника", 0.0),
-    ("🚧 Вылет на обочину (-2 сек)", 2.0),
-    ("💨 Лучший круг!", -1.5),
-    ("⚙ Проблемы с тормозами", 1.0),
-    ("⚪ Пит-стоп (+3 сек)", 3.0),
+    ("Обогнал соперника", 0.0),
+    ("Вылет на обочину (-2 сек)", 2.0),
+    ("Лучший круг!", -1.5),
+    ("Проблемы с тормозами", 1.0),
+    ("Пит-стоп (+3 сек)", 3.0),
 ]
 
 
@@ -41,7 +41,7 @@ def simulate_lap(car: Car, strategy: dict, lap: int) -> Tuple[float, Optional[st
     if random.random() < 0.3:
         event_text, penalty = random.choice(EVENTS)
         event_penalty = penalty
-        if event_text == "💨 Лучший круг!":
+        if event_text == "Лучший круг!":
             event_penalty = -1.5
 
     lap_time += event_penalty
@@ -63,7 +63,7 @@ def run_race(car: Car, strategy: dict) -> RaceResult:
 
         if crashed:
             lap_times.append(round(lap_time, 1))
-            events.append((lap, f"💢 Поломка на {lap}-м круге!", tire_wear))
+            events.append((lap, f"Поломка на {lap}-м круге!", tire_wear))
             crash = True
             break
 
