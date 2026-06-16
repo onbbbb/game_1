@@ -1,45 +1,45 @@
 {
-  "name": "Красный гусь",
-  "money": 120000,
+  "name": "Команда",
+  "money": 70000,
   "wins": 0,
-  "races_total": 10,
+  "races_total": 5,
   "win_streak": 0,
   "car": {
-    "engine": 50,
-    "tires": 40,
+    "engine": 35,
+    "tires": 35,
     "aero": 40,
-    "reliability": 70
+    "reliability": 80
   },
   "upgrade_levels": {
-    "engine": 4,
-    "tires": 2,
+    "engine": 1,
+    "tires": 1,
     "aero": 2,
-    "reliability": 4
+    "reliability": 6
   },
   "history": [
     {
-      "race": 6,
-      "position": 6,
-      "prize": 30000
-    },
-    {
-      "race": 7,
-      "position": 10,
-      "prize": 30000
-    },
-    {
-      "race": 8,
-      "position": 8,
-      "prize": 30000
-    },
-    {
-      "race": 9,
+      "race": 1,
       "position": 10,
       "prize": 50000
     },
     {
-      "race": 10,
-      "position": 9,
+      "race": 2,
+      "position": 10,
+      "prize": 50000
+    },
+    {
+      "race": 3,
+      "position": 10,
+      "prize": 30000
+    },
+    {
+      "race": 4,
+      "position": 10,
+      "prize": 50000
+    },
+    {
+      "race": 5,
+      "position": 10,
       "prize": 50000
     }
   ]

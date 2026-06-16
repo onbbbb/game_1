@@ -28,7 +28,7 @@ def main(page: ft.Page):
         page.add(
             ft.Column(
                 [
-                    ft.Text("🏁 Гоночный симулятор", size=32, weight=ft.FontWeight.BOLD),
+                    ft.Text("Гоночный симулятор", size=32, weight=ft.FontWeight.BOLD),
                     ft.Text("Гоночный менеджер", size=16, color=ft.Colors.GREY_400),
                     ft.Divider(height=30, color=ft.Colors.TRANSPARENT),
                     ft.TextField(
@@ -71,9 +71,9 @@ def main(page: ft.Page):
 
         stats = ft.Column(
             [
-                ft.Text(f"💳 БАЛАНС: {team.money:,} ₽".replace(",", " "), size=18, weight=ft.FontWeight.BOLD),
-                ft.Text(f"🥇 ПОБЕД: {team.wins} / ЗАЕЗДОВ: {team.races_total}", size=14),
-                ft.Text(f"⚡ СТРИК: {team.win_streak}", size=14, color=ft.Colors.ORANGE_400 if team.win_streak >= 2 else ft.Colors.GREY_400),
+                ft.Text(f"БАЛАНС: {team.money:,} ₽".replace(",", " "), size=18, weight=ft.FontWeight.BOLD),
+                ft.Text(f"ПОБЕД: {team.wins} / ЗАЕЗДОВ: {team.races_total}", size=14),
+                ft.Text(f"СТРИК: {team.win_streak}", size=14, color=ft.Colors.ORANGE_400 if team.win_streak >= 2 else ft.Colors.GREY_400),
             ],
             spacing=4,
         )
@@ -82,22 +82,22 @@ def main(page: ft.Page):
         car_stats = ft.Column(
             [
                 ft.Row([
-                    ft.Text("⚙ Двигатель:", width=150),
+                    ft.Text("Двигатель:", width=150),
                     ft.ProgressBar(width=bar_width, value=team.car.engine / 100, color=ft.Colors.BLUE_400),
                     ft.Text(f"{team.car.engine}", width=30),
                 ], spacing=5),
                 ft.Row([
-                    ft.Text("⚪ Шины:", width=150),
+                    ft.Text("Шины:", width=150),
                     ft.ProgressBar(width=bar_width, value=team.car.tires / 100, color=ft.Colors.GREEN_400),
                     ft.Text(f"{team.car.tires}", width=30),
                 ], spacing=5),
                 ft.Row([
-                    ft.Text("💨 Аэродинамика:", width=150),
+                    ft.Text("Аэродинамика:", width=150),
                     ft.ProgressBar(width=bar_width, value=team.car.aero / 100, color=ft.Colors.PURPLE_400),
                     ft.Text(f"{team.car.aero}", width=30),
                 ], spacing=5),
                 ft.Row([
-                    ft.Text("🛡 Надёжность:", width=150),
+                    ft.Text("Надёжность:", width=150),
                     ft.ProgressBar(width=bar_width, value=team.car.reliability / 100, color=ft.Colors.ORANGE_400),
                     ft.Text(f"{team.car.reliability}", width=30),
                 ], spacing=5),
@@ -107,10 +107,10 @@ def main(page: ft.Page):
 
         parts = ["engine", "tires", "aero", "reliability"]
         part_names = {
-            "engine": "⚙ двигатель",
-            "tires": "⚪ шины",
-            "aero": "💨 аэродинамику",
-            "reliability": "🛡 надёжность",
+            "engine": "двигатель",
+            "tires": "шины",
+            "aero": "аэродинамику",
+            "reliability": "надёжность",
         }
         upgrade_buttons = []
         for part in parts:
@@ -126,7 +126,7 @@ def main(page: ft.Page):
             upgrade_buttons.append(btn)
 
         start_btn = ft.FilledTonalButton(
-            "🚥 СТАРТ ГОНКИ",
+            "СТАРТ ГОНКИ",
             width=300,
             on_click=lambda e: show_strategy_select(),
             style=ft.ButtonStyle(
@@ -143,7 +143,7 @@ def main(page: ft.Page):
         history_items = []
         for h in reversed(team.history[-5:]):
             pos = h["position"]
-            pos_emoji = {1: "🥇", 2: "🥈", 3: "🥉"}
+            pos_emoji = {1: "1-е", 2: "2-е", 3: "3-е"}
             emoji = pos_emoji.get(pos, f"#{pos}")
             pos_name = h.get("position_name", f"{pos}-е место")
             prize_str = f"{h['prize']:,} ₽".replace(",", " ")
@@ -156,7 +156,7 @@ def main(page: ft.Page):
         page.add(
             ft.Column(
                 [
-                    ft.Text("🏁 Гоночный симулятор", size=24, weight=ft.FontWeight.BOLD),
+                    ft.Text("Гоночный симулятор", size=24, weight=ft.FontWeight.BOLD),
                     ft.Text(f"Команда: {team.name}", size=14, color=ft.Colors.GREY_400),
                     ft.Divider(height=10),
                     stats,
@@ -168,7 +168,7 @@ def main(page: ft.Page):
                     ft.Divider(height=10),
                     start_btn,
                     ft.Divider(height=10),
-                    ft.Text("📋 ИСТОРИЯ:", size=14, weight=ft.FontWeight.BOLD),
+                    ft.Text("ИСТОРИЯ:", size=14, weight=ft.FontWeight.BOLD),
                     history_col,
                     ft.Divider(height=10),
                     reset_btn,
@@ -200,7 +200,7 @@ def main(page: ft.Page):
         page.add(
             ft.Column(
                 [
-                    ft.Text("🚥 ВЫБОР СТРАТЕГИИ", size=22, weight=ft.FontWeight.BOLD),
+                    ft.Text("ВЫБОР СТРАТЕГИИ", size=22, weight=ft.FontWeight.BOLD),
                     ft.Divider(height=20),
                     ft.Text("Выберите стратегию на гонку:", size=14),
                     ft.Divider(height=10),
@@ -210,9 +210,9 @@ def main(page: ft.Page):
                         content=ft.Column(
                             [
                                 ft.Text("Стратегия  | Скорость | Износ шин | Риск", weight=ft.FontWeight.BOLD),
-                                ft.Text("🟩 Экономная  | ×0.9     | ×0.5      | ×0.5"),
-                                ft.Text("🟨 Нормальная | ×1.0     | ×1.0      | ×1.0"),
-                                ft.Text("🟥 Агрессивная| ×1.2     | ×1.5      | ×1.5"),
+                                ft.Text("Экономная  | ×0.9     | ×0.5      | ×0.5"),
+                                ft.Text("Нормальная | ×1.0     | ×1.0      | ×1.0"),
+                                ft.Text("Агрессивная| ×1.2     | ×1.5      | ×1.5"),
                             ],
                             spacing=2,
                         ),
@@ -255,13 +255,11 @@ def main(page: ft.Page):
 
         strat = STRATEGIES[strategy_name]
         strat_color = {"economy": ft.Colors.GREEN_400, "normal": ft.Colors.YELLOW_400, "aggressive": ft.Colors.RED_400}
-        strat_emoji = {"economy": "🟩", "normal": "🟨", "aggressive": "🟥"}
-
         broadcast_items = []
         for i in range(current_lap + 1):
             t = race_lap_times[i]
             ev = race_events[i][1] if i < len(race_events) else None
-            line = f"{strat_emoji[strategy_name]} Круг {i+1}: {t:.1f} сек"
+            line = f"Круг {i+1}: {t:.1f} сек"
             if ev:
                 line += f" — {ev}"
             broadcast_items.append(ft.Text(line))
@@ -271,14 +269,14 @@ def main(page: ft.Page):
         fastest = min(race_lap_times[:current_lap + 1])
 
         continue_btn = ft.FilledButton(
-            "⏭ ПРОДОЛЖИТЬ СЛЕДУЮЩИЙ КРУГ",
+            "ПРОДОЛЖИТЬ СЛЕДУЮЩИЙ КРУГ",
             width=300,
             on_click=lambda e: advance_lap(),
         )
 
         if race_result.crash and lap_num == race_result.laps_driven:
             continue_btn = ft.FilledButton(
-                "🚥 К ГОНКЕ",
+                "К ГОНКЕ",
                 width=300,
                 on_click=lambda e: show_race_result(),
             )
@@ -288,13 +286,13 @@ def main(page: ft.Page):
         page.add(
             ft.Column(
                 [
-                    ft.Text(f"🚥 ГОНКА: ВЕЛИКИЙ ПРИЗ", size=20, weight=ft.FontWeight.BOLD),
+                    ft.Text("ГОНКА: ВЕЛИКИЙ ПРИЗ", size=20, weight=ft.FontWeight.BOLD),
                     ft.Text(f"КРУГ {lap_num}/{total_laps} | Стратегия: {strat_name}", size=14, color=ft.Colors.GREY_400),
                     ft.Divider(height=10),
                     ft.Container(
                         content=ft.Column(
                             [
-                                ft.Text("📣 ТРАНСЛЯЦИЯ:", weight=ft.FontWeight.BOLD),
+                                ft.Text("ТРАНСЛЯЦИЯ:", weight=ft.FontWeight.BOLD),
                                 *broadcast_items,
                             ],
                             spacing=3,
@@ -307,9 +305,9 @@ def main(page: ft.Page):
                     ft.Divider(height=10),
                     ft.Row([
                         ft.Column([
-                            ft.Text(f"📈 ПОЗИЦИЯ: {race_result.position}-е место", size=14),
-                            ft.Text(f"⏰ ЛУЧШИЙ КРУГ: {fastest:.1f} сек", size=14),
-                            ft.Text(f"⚪ СОСТОЯНИЕ ШИН: {tire_pct}%", size=14),
+                            ft.Text(f"ПОЗИЦИЯ: {race_result.position}-е место", size=14),
+                            ft.Text(f"ЛУЧШИЙ КРУГ: {fastest:.1f} сек", size=14),
+                            ft.Text(f"СОСТОЯНИЕ ШИН: {tire_pct}%", size=14),
                         ], spacing=4),
                     ]),
                     ft.Divider(height=10),
@@ -331,21 +329,21 @@ def main(page: ft.Page):
 
         pos = race_result.position
         if pos == 1:
-            pos_text = f"🥇 1 МЕСТО! ПОБЕДА! 🥇"
+            pos_text = "1 МЕСТО! ПОБЕДА!"
         elif pos == 2:
-            pos_text = f"🥈 2 МЕСТО!"
+            pos_text = "2 МЕСТО!"
         elif pos == 3:
-            pos_text = f"🥉 3 МЕСТО!"
+            pos_text = "3 МЕСТО!"
         else:
             pos_text = f"#{pos} МЕСТО"
 
-        prize_lines = [f"💳 ПРИЗОВЫЕ: {race_result.prize:,} ₽".replace(",", " ")]
+        prize_lines = [f"ПРИЗОВЫЕ: {race_result.prize:,} ₽".replace(",", " ")]
         total_prize = race_result.prize
         if race_result.fastest_lap:
-            prize_lines.append(f"✨ Бонус (лучший круг): +20 000 ₽")
+            prize_lines.append("Бонус (лучший круг): +20 000 ₽")
             total_prize += 20_000
         if not race_result.crash and pos == 1 and team.win_streak >= 2:
-            prize_lines.append(f"⚡ Стрик 3+ побед: +100 000 ₽")
+            prize_lines.append("Стрик 3+ побед: +100 000 ₽")
             total_prize += 100_000
 
         stats_lines = [
@@ -354,7 +352,7 @@ def main(page: ft.Page):
             f"• Кругов пройдено: {race_result.laps_driven}/5",
         ]
         if race_result.crash:
-            stats_lines.append("💢 СХОД С ДИСТАНЦИИ")
+            stats_lines.append("СХОД С ДИСТАНЦИИ")
 
         def finish_race():
             nonlocal team
@@ -376,7 +374,7 @@ def main(page: ft.Page):
         page.add(
             ft.Column(
                 [
-                    ft.Text("👑 РЕЗУЛЬТАТ 👑", size=24, weight=ft.FontWeight.BOLD),
+                    ft.Text("РЕЗУЛЬТАТ", size=24, weight=ft.FontWeight.BOLD),
                     ft.Divider(height=20),
                     ft.Text(pos_text, size=20, weight=ft.FontWeight.BOLD, color=ft.Colors.YELLOW_400 if pos == 1 else ft.Colors.WHITE),
                     ft.Divider(height=15),
@@ -385,7 +383,7 @@ def main(page: ft.Page):
                     ft.Container(
                         content=ft.Column(
                             [
-                                ft.Text("📈 СТАТИСТИКА:", weight=ft.FontWeight.BOLD),
+                                ft.Text("СТАТИСТИКА:", weight=ft.FontWeight.BOLD),
                                 *[ft.Text(l, size=13) for l in stats_lines if l],
                             ],
                             spacing=3,
